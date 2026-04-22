@@ -11,6 +11,12 @@ feedback on a product direction.
 Do **not** use this for PR update pages that are demo-first and append-only.
 Use `notion-prd-style` for those.
 
+## Safety
+
+Do not include PHI, patient examples, secrets, tokens, customer-specific data,
+or private URLs in proposal docs. Keep examples and references generic unless a
+specific internal system is essential to the proposal.
+
 ## Default audience
 
 Assume the reader is a PM, VP Product, Head of Product, or product/engineering
@@ -68,20 +74,20 @@ Use this shape unless the user asks for something else:
 ## Writing rules
 
 - **Lead with the ask.** The executive summary should make the proposal legible
-  without reading the rest.
+without reading the rest.
 - **Be concise.** Prefer short paragraphs and flat bullets. Avoid long
-  background sections.
+background sections.
 - **Separate low-risk and high-risk changes.** If the proposal contains mixed
-  risk, recommend a staged rollout instead of bundling them together.
+risk, recommend a staged rollout instead of bundling them together.
 - **Use analytics for meaning, not decoration.** State the takeaway in plain
-  English after the number.
+English after the number.
 - **Include one viable alternative.** Do not use a strawman; name a real option
-  and its tradeoffs.
+and its tradeoffs.
 - **Call out timing if it matters.** If launch timing, platform expansion, or
-  shared infrastructure makes the moment important, say so in the executive
-  summary.
+shared infrastructure makes the moment important, say so in the executive
+summary.
 - **Prefer rewrite-in-place.** For proposal docs, refine the same memo rather
-  than append new versions, unless the user explicitly wants versioned history.
+than append new versions, unless the user explicitly wants versioned history.
 
 ## What to include
 
@@ -104,7 +110,7 @@ Use this shape unless the user asks for something else:
 - Prefer 1-3 high-signal metrics in the main memo.
 - Use metrics to justify sequencing decisions.
 - Distinguish between **population-level risk** and **high-intent cohort risk**
-  when relevant.
+when relevant.
 - If a metric is ambiguous, say what it does and does not prove.
 
 ## Notion-flavored Markdown reminders
@@ -112,5 +118,6 @@ Use this shape unless the user asks for something else:
 - Use tabs (not spaces) to indent children of `<callout>` and `<columns>`.
 - Inline code uses backticks.
 - Tables use `<table fit-page-width="true" header-row="true">` with plain
-  `<tr>` / `<td>` children on their own lines.
+`<tr>` / `<td>` children on their own lines.
 - `<empty-block/>` must be on its own line to render as a blank line.
+
