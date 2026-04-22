@@ -13,7 +13,8 @@ the Cursor agent discovers them automatically.
 |---|---|
 | `pr-scope-discipline` | Never sneak unrelated changes (skills, configs, docs) onto a feature PR. |
 | `local-dev-overrides` | Gitignored local dev override files (e.g. `growthbook.dev.local.json`) must never be reverted as part of PR prep. |
-| `notion-prd-style` | Style rules for PR PRD pages in the Freed "PR PRD" Notion database — terse, demo-first, no design rationale. |
+| `notion-prd-style` | Terse, demo-first Notion PR update pages in the Freed "PR PRD" database — best for shipped/PR-linked updates, not stakeholder proposals. |
+| `notion-product-proposal-style` | Concise stakeholder memos for product proposals in Notion — decision-first, metrics-backed, with rationale, sequencing, and one viable alternative. |
 
 ## Install on a new machine / workspace
 
