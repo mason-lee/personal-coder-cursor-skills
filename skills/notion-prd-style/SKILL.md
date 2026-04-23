@@ -82,11 +82,59 @@ Do not add these sections or phrases unless the user explicitly asks for them:
   "no longer disappears on empty lists"), "we tried X first", or any
   mid-implementation state no stakeholder ever saw.
 
+## Prose formatting (Mason's preferences)
+
+The PRD is read top-to-bottom by stakeholders. Loud inline formatting on
+every identifier makes the page feel like a code review instead of a
+product update. Default to the quieter option.
+
+- **Italic over backticks for identifiers in prose.** Data-model fields
+  (*patient_id*, *patient_name*), feature-flag names (*aiux*), component
+  and prop names (*PatientNameAutocomplete*, *predictedPatientName*),
+  branch names (*mason/feature-foo*), UI button labels referenced in
+  copy (*✓ Confirm*, *Review ▼*), and `data-testid` values should be
+  wrapped in `*italics*` when they appear inside sentences. Backticks
+  are visually loud; reserve them for actual code blocks or fenced
+  snippets (e.g. inside `<code language="...">` and SQL / shell
+  examples).
+- **Product name in prose, codename only for technical identifiers.**
+  Refer to the shipped product by its user-facing name ("Freed 2.0"),
+  never by its internal codename, in prose. The codename (e.g. *aiux*)
+  is reserved for the GrowthBook flag, `data-testid` attributes, and
+  file paths, and is still rendered in *italics* per the rule above.
+- **Don't repeat the same stat across sections.** If a headline number
+  (e.g. "47% ignored") appears in the TL;DR, the table, and the success
+  metrics, each instance has to add something distinct (hook vs. data
+  vs. target). Pure restatements — especially a bullet that just
+  re-quotes numbers already visible in a table above it — get deleted.
+- **Drop "what this tells us" bullets that just restate the table.**
+  A takeaway section should add a non-obvious strategic frame or not
+  exist at all. When in doubt, collapse to a one-sentence takeaway
+  directly under the table.
+- **Round numbers in prose, precision in tables.** Striking precision
+  (e.g. "0.005% explicit confirm") often reads as alarmist or nitpicky
+  inside a TL;DR. Round in narrative ("\~50%") and keep the precise
+  figure in the backing table / analytics section.
+- **Consolidate related bullets.** If two bullets are expressing the
+  same underlying idea (e.g. "unlocks predictive summary" +
+  "unlocks carry-forward", both keyed off the same patient context
+  page), merge them into one bullet instead of listing them
+  separately.
+- **Respect prior user edits on revision passes.** If the user manually
+  removed bullets, stats, or phrasing between turns, do not silently
+  re-introduce the deleted content under a different structure when
+  you do further polish. Ask before putting it back.
+- **Grammar-polish TL;DR and section leads.** These get read verbatim.
+  Catch subject/number agreement ("leaving a visit" →
+  "leaving those visits"), preposition drift, and dangling phrases
+  before shipping the doc.
+
 ## Notion-flavored Markdown reminders
 
 - Use tabs (not spaces) to indent children of `<callout>` and `<columns>`.
-- Inline code uses backticks: `` `stickyHeaders` ``.
-- Escape a leading `~` in prose as `\~` (the doc uses this for "~30k").
+- Inline identifiers go in `*italics*` per the prose formatting rule
+  above; backticks are for actual code blocks only.
+- Escape a leading `~` in prose as `\~` (the doc uses this for "\~30k").
 - Tables use `<table fit-page-width="true" header-row="true">` with plain
   `<tr>` / `<td>` children on their own lines, no extra indentation.
 - `<empty-block/>` must be on its own line to render as a blank line.

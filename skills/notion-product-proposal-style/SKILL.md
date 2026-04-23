@@ -113,10 +113,43 @@ than append new versions, unless the user explicitly wants versioned history.
 when relevant.
 - If a metric is ambiguous, say what it does and does not prove.
 
+## Prose formatting (Mason's preferences)
+
+A stakeholder memo is prose-heavy. Loud inline formatting on every
+identifier distracts from the decision ask.
+
+- **Italic over backticks for identifiers in prose.** Data-model fields
+  (*patient_id*), feature-flag names (*aiux*), component names, branch
+  names, and UI button labels referenced in copy go in `*italics*` when
+  embedded in sentences. Reserve backticks for actual code snippets or
+  fenced code blocks.
+- **Product name in prose, codename only for technical identifiers.**
+  Refer to the shipped product by its user-facing name ("Freed 2.0") in
+  executive summary, proposal, and success metrics sections. Internal
+  codenames (e.g. *aiux*) appear only when pointing to a feature flag,
+  `data-testid`, or file path, still rendered in *italics*.
+- **Round in prose, precise in tables.** Striking precision (e.g.
+  "0.005%") can feel alarmist or nitpicky in an executive summary.
+  Round in the narrative ("\~50%") and keep the precise figure in the
+  backing analytics or table.
+- **Don't repeat the same stat.** If "47%" appears in the executive
+  summary, analytics, and success metrics, each instance has to add
+  something distinct (hook, data, target). Pure restatements get cut.
+- **Consolidate related bullets.** If two bullets share the same
+  underlying idea, merge them rather than list them separately.
+- **Respect prior user edits on revision passes.** If the user manually
+  trimmed content between turns, do not re-introduce the deleted
+  material under a different structure when doing further polish. Ask
+  before putting it back.
+- **Grammar-polish the executive summary.** Stakeholders read it
+  verbatim — catch subject/number agreement and preposition drift
+  before shipping.
+
 ## Notion-flavored Markdown reminders
 
 - Use tabs (not spaces) to indent children of `<callout>` and `<columns>`.
-- Inline code uses backticks.
+- Inline identifiers go in `*italics*` per the prose formatting rule
+  above; backticks are for actual code blocks only.
 - Tables use `<table fit-page-width="true" header-row="true">` with plain
 `<tr>` / `<td>` children on their own lines.
 - `<empty-block/>` must be on its own line to render as a blank line.
