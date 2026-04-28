@@ -69,6 +69,85 @@ perspective.
 - **Never delete existing content.** Append new iterations below the previous
   section, separated by a `---` divider.
 
+## Metric placeholders (`[ADD_METRIC]`)
+
+When generating a PRD, look for places where a concrete usage stat would
+strengthen the case — adoption rates, event volumes, conversion funnels,
+error rates, latency percentiles, or any quantitative signal that makes the
+"why" more persuasive. If the data is not available from context, insert a
+placeholder:
+
+```
+[ADD_METRIC: <plain-English description of the stat needed>]
+```
+
+### Where to place markers
+
+- **"Why this matters" / context sections** — adoption or frequency stats
+  that justify the change (e.g. how often users hit the pain point today).
+- **Before/after comparison tables** — baseline metrics the reviewer can
+  compare against after the change ships.
+- **Callout blocks** — headline stats that anchor a section
+  (e.g. "**X% of DAU** use this feature").
+- **Inline in prose** — when a sentence makes a claim that would land
+  harder with a number behind it.
+
+### Rules for markers
+
+- Keep the description specific enough that someone can query it without
+  re-reading the whole PRD. Bad: `[ADD_METRIC: usage data]`.
+  Good: `[ADD_METRIC: daily unique users who trigger bulk delete, last 30d]`.
+- Include the time window or comparison period when relevant
+  (e.g. "last 30d", "week-over-week", "since launch").
+- If a table has multiple rows that need data, put one marker per row
+  rather than a single marker for the whole table.
+- Don't over-mark. One or two well-placed metrics per section is plenty.
+  If a section doesn't need data to make its point, skip it.
+
+## Analytics prompts
+
+At the end of the generated PRD — below all content sections and the
+`<empty-block/>` — append a **📊 Analytics prompts** block. This gives
+the author ready-to-paste prompts for their internal analytics tool to
+fill in each `[ADD_METRIC]` placeholder.
+
+### Format
+
+```
+---
+### 📊 Analytics prompts
+Use these with your analytics tool to fill in the `[ADD_METRIC]` placeholders above.
+
+1. **<Short label matching the marker>**
+   > "<Natural-language question phrased for a data analyst or analytics AI.
+   >  Include: metric name, entity (users / events / sessions), time window,
+   >  any breakdowns (by platform, user segment, etc.), and desired output
+   >  format (single number, trend, table).>"
+
+2. **<Next marker>**
+   > "..."
+```
+
+### Rules for prompts
+
+- **One prompt per `[ADD_METRIC]` marker**, numbered to match.
+- **Write the prompt as a complete, self-contained question.** The person
+  pasting it into the analytics tool should not need to look up context.
+  Include the feature name, relevant event names or table names if known,
+  the time window, and what shape the answer should take.
+- **Suggest breakdowns when useful** — by platform (web / mobile / desktop),
+  by user role, by cohort, by time period — but only when the breakdown
+  would actually inform the PRD narrative.
+- **If event or table names are unknown, describe the behavior instead.**
+  The analytics tool can map behavior descriptions to the right data
+  source. E.g. "How many users delete 2+ visits in a single session?"
+  rather than "Query the `visit_bulk_delete` event."
+- **Keep prompts concise.** One to three sentences max. The analytics tool
+  doesn't need preamble or politeness.
+- **Remove the analytics prompts section when all markers are filled.**
+  Once the author has replaced every `[ADD_METRIC]` with real data, delete
+  the prompts block — it's scaffolding, not part of the final doc.
+
 ## Drop these by default
 
 Do not add these sections or phrases unless the user explicitly asks for them:
