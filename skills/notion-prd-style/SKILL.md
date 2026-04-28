@@ -63,6 +63,10 @@ perspective.
 
 - **Demo first.** The Loom video goes immediately under the metadata callout,
   under a `### Demo` heading. Don't bury it below prose.
+- **Before/After screenshots are mandatory for UI changes.** Every PR that
+  touches the UI must include a side-by-side comparison showing the
+  production state (before) and the PR state (after). Place them under a
+  `### Before / After` heading, between Demo and What changed.
 - **"What changed" bullets only.** Each bullet starts with the feature in
   **bold**, em-dash, then a single-sentence explanation. No sub-bullets, no
   intro paragraph before the list.
@@ -79,10 +83,6 @@ perspective.
   else.
 - **Never delete existing content.** Append new iterations below the previous
   section, separated by a `---` divider.
-- **Before/After screenshots are mandatory for UI changes.** Every PR that
-  touches the UI must include a side-by-side comparison showing the
-  production state (before) and the PR state (after). Place them under a
-  `### Before / After` heading, between Demo and What changed.
 
 ## Before / After screenshot capture
 
