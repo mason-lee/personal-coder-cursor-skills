@@ -36,6 +36,17 @@ without being asked.
 </callout>
 ### Demo
 <video src="<loom url>"></video>
+### Before / After
+<columns>
+	<column>
+		**Before**
+		![Before screenshot](<url>)
+	</column>
+	<column>
+		**After**
+		![After screenshot](<url>)
+	</column>
+</columns>
 ### What changed
 - **<Feature name in bold>** — one-sentence description.
 - **<Feature name in bold>** — one-sentence description.
@@ -68,6 +79,63 @@ perspective.
   else.
 - **Never delete existing content.** Append new iterations below the previous
   section, separated by a `---` divider.
+- **Before/After screenshots are mandatory for UI changes.** Every PR that
+  touches the UI must include a side-by-side comparison showing the
+  production state (before) and the PR state (after). Place them under a
+  `### Before / After` heading, between Demo and What changed.
+
+## Before / After screenshot capture
+
+For any PR with UI changes, capture screenshots of the relevant screens
+from both the current production state and the PR branch. This gives
+reviewers an instant visual diff without needing to check out the code.
+
+### Capture workflow
+
+1. **Before (main branch):**
+   - Check out the latest remote `main` branch (or use the production app).
+   - Navigate to the affected screen(s) in the browser.
+   - Take a screenshot of each screen that the PR changes. Use the
+     browser MCP tools (`browser_take_screenshot`) or manual capture.
+   - Save each screenshot with a descriptive name
+     (e.g. `before-visit-list.png`).
+
+2. **After (PR branch):**
+   - Check out the PR branch and run the app locally.
+   - Navigate to the same screen(s), matching the same state and viewport
+     as the "before" screenshots as closely as possible.
+   - Take a matching screenshot for each.
+
+3. **Upload and embed:**
+   - Upload both images to the Notion page (or a shared image host).
+   - Embed them in a `<columns>` block under `### Before / After`:
+     ```
+     ### Before / After
+     <columns>
+     	<column>
+     		**Before**
+     		![Before screenshot](<url>)
+     	</column>
+     	<column>
+     		**After**
+     		![After screenshot](<url>)
+     	</column>
+     </columns>
+     ```
+
+### Rules for screenshots
+
+- **Match the viewport and state.** Both screenshots should show the same
+  screen, same data (or equivalent), same window width. The only
+  difference should be the UI change itself.
+- **Crop to the relevant area.** Full-page screenshots are fine for layout
+  changes; crop to the component for focused changes (e.g. a button
+  redesign or a single panel tweak).
+- **Multiple pairs are OK.** If the PR affects several screens or states
+  (e.g. empty state, loaded state, error state), include a pair for each.
+  Stack them vertically, each in its own `<columns>` block.
+- **Skip for non-visual changes.** If the PR is purely backend, data, or
+  logic with no visible UI impact, omit the Before / After section.
 
 ## Metric placeholders (`[ADD_METRIC]`)
 
